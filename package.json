@@ -9,7 +9,8 @@
   "private": false,
   "scripts": {
     "start": "node src/ index",
-    "docker": "docker-compose up -d --build proxy"
+    "build": "docker build --tag shroomlife/docker-proxy:latest .",
+    "deploy": "docker push shroomlife/docker-proxy:latest"
   },
   "dependencies": {
     "dockerode": "2.5.8",

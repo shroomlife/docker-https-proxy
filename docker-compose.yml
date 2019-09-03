@@ -3,13 +3,9 @@ services:
   proxy:
     container_name: proxy
     image: shroomlife/docker-proxy:latest
-    build: .
     ports:
       - "80:80"
       - "443:443"
-  example1:
-    container_name: localhost.proxy
+  example.com:
+    container_name: example.com.proxy
     image: httpd:latest
-  example2:
-    container_name: localshroom.proxy
-    image: wordpress:latest
