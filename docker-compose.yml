@@ -2,27 +2,14 @@ version: '3.3'
 services:
   proxy:
     container_name: proxy
-    image: docker-proxy:latest
+    image: shroomlife/docker-proxy:latest
     build: .
     ports:
       - "80:80"
       - "443:443"
-    volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock"
   example1:
-    container_name: example1
+    container_name: localhost.proxy
     image: httpd:latest
-    labels:
-      com.docker.proxy.domain: "localhost"
-      com.docker.proxy.port: "80"
-      com.docker.proxy.onlyHTTPS: "true"
   example2:
-    container_name: example2
+    container_name: localshroom.proxy
     image: wordpress:latest
-    labels:
-      com.docker.proxy.domain: "localshroom"
-      com.docker.proxy.port: "80"
-    ports:
-      - "1337:80"
-    volumes:
-      - "c:/code/usr/shroomlife/docker-proxy/wordpress:/var/www/html"
