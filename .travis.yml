@@ -1,10 +1,13 @@
 services:
   - docker
 
+before_install:
+  - yarn
+
 install:
   - yarn test
-
-script:
   - docker build --tag shroomlife/docker-https-proxy:latest .
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+
+script:
   - docker push shroomlife/docker-https-proxy:latest
