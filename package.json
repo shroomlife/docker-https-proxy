@@ -6,7 +6,6 @@
   "repository": "https://github.com/shroomlife/docker-https-proxy",
   "author": "shroomlife",
   "license": "Apache-2.0",
-  "private": false,
   "scripts": {
     "start": "node src/index"
   },
