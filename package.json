@@ -1,16 +1,14 @@
 {
-  "name": "docker-proxy",
-  "version": "0.1.0",
+  "name": "docker-https-proxy",
+  "version": "1.0.0",
   "main": "index.js",
   "description": "a simple docker container to proxy requests inside your docker network",
-  "repository": "https://github.com/shroomlife/docker-proxy",
+  "repository": "https://github.com/shroomlife/docker-https-proxy",
   "author": "shroomlife",
   "license": "Apache-2.0",
   "private": false,
   "scripts": {
-    "start": "node src/ index",
-    "build": "docker build --tag shroomlife/docker-proxy:latest .",
-    "deploy": "docker push shroomlife/docker-proxy:latest"
+    "start": "node src/index"
   },
   "dependencies": {
     "dockerode": "2.5.8",
