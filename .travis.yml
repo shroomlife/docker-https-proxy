@@ -2,8 +2,9 @@ services:
   - docker
 
 install:
-  - docker build --tag shroomlife/docker-https-proxy:latest .
+  - yarn test
 
 script:
+  - docker build --tag shroomlife/docker-https-proxy:latest .
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker push shroomlife/docker-https-proxy:latest

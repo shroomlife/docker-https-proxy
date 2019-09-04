@@ -1,58 +1,15 @@
-const express = require('express');
-const http = require('http');
-const https = require('https');
-const path = require('path');
-const fs = require('fs');
-const bodyParser = require('body-parser');
-const request = require('request');
+const { startProxyServer } = require('./server');
 
-const app = express();
+const customStartConfig = {
+  ports: {
+    http: 80,
+    https: 443
+  },
+  test: false
+};
 
-var rawBodySaver = function (req, res, buf) {
-  if (buf && buf.length) {
-		req.rawBuffer = buf;
-  }
-}
-
-app.use(bodyParser.raw({ limit: '100mb', verify: rawBodySaver, type: function () { return true } }));
-
-app.use((req, res, next) => {
-  const newHost = req.hostname;
-  proxyRequest(req, res, next, newHost);
+startProxyServer(customStartConfig).then(() => {
+  console.log("app is listening ...");
+}).catch((error) => {
+  console.error(error);
 });
-
-app.use((req, res, next) => {
-  const newHost = req.hostname.replace("www.", "");
-  proxyRequest(req, res, next, newHost);
-});
-
-app.use((req, res) => {
-  res.send('nothing found here');
-});
-
-const proxyRequest = (req, res, next, newHost) => {
-
-  request({
-		url: `http://${req.hostname}.proxy${req.url}`,
-		method: req.method,
-		headers: req.headers,
-		body: req.rawBuffer,
-    followRedirect: false,
-    multipart: req.rawBody ? true : false
-  }).on('error', error => {
-    console.error(error);
-    next();
-  }).pipe(res);
-
-}
-
-http.createServer(app).listen(80);
-https
-	.createServer(
-		{
-			key: fs.readFileSync(path.join('.ssl', 'server.key')),
-			cert: fs.readFileSync(path.join('.ssl', 'server.crt'))
-		},
-		app
-	)
-	.listen(443);
