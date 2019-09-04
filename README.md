@@ -1,6 +1,6 @@
-# docker-proxy
+# docker-https-proxy [![Build Status](https://travis-ci.org/shroomlife/docker-https-proxy.svg?branch=master)](https://travis-ci.org/shroomlife/docker-https-proxy)
 
-this is an easy HTTP proxy docker container that you can use to have multiple docker containers running on a single machine and to proxy requests among the containers.
+this is an easy HTTP(s) proxy docker container that you can use to have multiple docker containers running on a single machine and to proxy requests among the containers.
 
 ## how to use
 
