@@ -17,8 +17,22 @@ var rawBodySaver = function (req, res, buf) {
 app.use(bodyParser.raw({ limit: '100mb', verify: rawBodySaver, type: function () { return true } }));
 
 app.use((req, res, next) => {
+  const newHost = req.hostname;
+  proxyRequest(req, res, next, newHost);
+});
 
-	request({
+app.use((req, res, next) => {
+  const newHost = req.hostname.replace("www.", "");
+  proxyRequest(req, res, next, newHost);
+});
+
+app.use((req, res) => {
+  res.send('nothing found here');
+});
+
+const proxyRequest = (req, res, next, newHost) => {
+
+  request({
 		url: `http://${req.hostname}.proxy${req.url}`,
 		method: req.method,
 		headers: req.headers,
@@ -29,12 +43,8 @@ app.use((req, res, next) => {
     console.error(error);
     next();
   }).pipe(res);
-  
-});
 
-app.use((req, res) => {
-  res.send('nothing found here');
-});
+}
 
 http.createServer(app).listen(80);
 https
