@@ -11,7 +11,7 @@ version: '3.3'
 services:
   proxy:
     container_name: proxy
-    image: shroomlife/docker-proxy:latest
+    image: shroomlife/docker-https-proxy:latest
     ports:
       - "80:80"
       - "443:443"
