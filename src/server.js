@@ -3,9 +3,25 @@ const https = require('https');
 const path = require('path');
 const fs = require('fs');
 
+const sslKeyFileName = fs.readdirSync(path.join(__dirname, 'ssl')).filter(function(file) {
+  return path.extname(file).toLowerCase() === ".key";
+}).shift();
+
+const sslCertFileName = fs.readdirSync(path.join(__dirname, 'ssl')).filter(function(file) {
+  const extension = path.extname(file).toLowerCase();
+  return extension === ".crt" || extension === ".pem";
+}).shift();
+
+if(typeof sslKeyFileName === "undefined" || typeof sslCertFileName === "undefined") {
+  throw new Error("You need to add a .key file and a .crt file to your volume mount at /ssl");
+}
+
+const sslKeyFilePath = path.join(__dirname, 'ssl', sslKeyFileName);
+const sslCertFilePath = path.join(__dirname, 'ssl', sslCertFileName);
+
 const sslConfig = {
-  key: fs.readFileSync(path.join(__dirname, 'ssl', 'key.pem')),
-  cert: fs.readFileSync(path.join(__dirname, 'ssl', 'cert.pem'))
+  key: fs.readFileSync(sslKeyFilePath),
+  cert: fs.readFileSync(sslCertFilePath)
 };
 
 const startProxyServer = (config) => {
