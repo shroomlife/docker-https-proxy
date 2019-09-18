@@ -26,11 +26,13 @@ app.use((req, res, next) => {
 });
 
 app.use((req, res, next) => {
-	const proxyHost = req.hostname.replace('www.', '');
+  const proxyHost = req.hostname.replace('www.', '');
+  console.warn("FALLBACK PROXY", req.hostname, proxyHost);
 	proxy(req, res, next, proxyHost);
 });
 
 app.use((req, res) => {
+  console.warn("HOSTNAME NOT FOUND", req.hostname);
 	res.send('nothing found here');
 });
 

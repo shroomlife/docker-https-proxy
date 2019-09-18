@@ -11,7 +11,7 @@ const proxy = (req, res, next, proxyHost) => {
 		multipart: req.rawBody ? true : false
 	})
 		.on('error', (error) => {
-			console.error(error);
+      console.error("PROXY ERROR", req.hostname, proxyHost, error);
 			next();
 		})
 		.pipe(res);
