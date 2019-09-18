@@ -8,7 +8,7 @@
   "scripts": {
     "start": "node src/index",
     "test": "jest",
-    "build": "docker build . --tag shroomlife/docker-https-proxy"
+    "build": "docker build . --tag shroomlife/docker-https-proxy:latest"
   },
   "dependencies": {
     "body-parser": "1.19.0",
