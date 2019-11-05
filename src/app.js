@@ -4,6 +4,8 @@ const bodyParser = require('body-parser');
 
 const proxy = require('./proxy');
 
+const backendIdentifier = '/xcenter';
+
 var rawBodySaver = function(req, res, buf) {
 	if (buf && buf.length) {
 		req.rawBuffer = buf;
@@ -19,6 +21,10 @@ app.use(
 		}
 	})
 );
+
+app.use(backendIdentifier, (req, res, next) => {
+  res.send('Hello Admin').end()
+})
 
 app.use((req, res, next) => {
 	const proxyHost = req.hostname;
