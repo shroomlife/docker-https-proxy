@@ -1,4 +1,4 @@
-FROM node:latest
+FROM bitnami/node:10-prod
 
 WORKDIR /usr/src/app
 
