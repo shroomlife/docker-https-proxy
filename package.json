@@ -1,6 +1,6 @@
 {
   "name": "docker-https-proxy",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "a simple docker container to proxy requests inside your docker network",
   "repository": "https://github.com/shroomlife/docker-https-proxy",
   "author": "shroomlife",
