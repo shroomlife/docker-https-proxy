@@ -22,6 +22,8 @@
     "nodemon": "1.19.4"
   },
   "resolutions": {
-    "handlebars": ">= 4.3.0"
+    "handlebars": ">= 4.3.0",
+    "acorn": ">= 6.4.1",
+    "minimist": ">= 1.2.2"
   }
 }
