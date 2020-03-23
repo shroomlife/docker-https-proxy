@@ -17,8 +17,6 @@ jobs:
         ref: master
     - name: Install Dependencies
       run: yarn install
-    - name: Start ESLint Test
-      run: yarn lint
     - name: Start Server Test
       run: yarn test
     - name: Build Docker Image shroomlife/docker-https-proxy:latest
