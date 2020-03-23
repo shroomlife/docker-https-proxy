@@ -17,7 +17,7 @@ jobs:
         ref: master
     - name: Install Dependencies
       run: yarn install
-    - uses: eslint/github-action@v0
+    - uses: stefanoeb/eslint-action@1.0.2
     - name: Start Server Test
       run: yarn test
     - name: Build Docker Image shroomlife/docker-https-proxy:latest
