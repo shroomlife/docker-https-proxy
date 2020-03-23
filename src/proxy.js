@@ -1,20 +1,32 @@
-
-const request = require('request');
+const { request } =  require('http')
 
 const proxy = (req, res, next, proxyHost) => {
-	request({
-		url: `http://${proxyHost}.proxy${req.url}`,
-		method: req.method,
-		headers: req.headers,
-		body: req.rawBuffer,
-		followRedirect: false,
-		multipart: req.rawBody ? true : false
-	})
-		.on('error', (error) => {
-      console.error("PROXY ERROR", req.hostname, proxyHost, error);
-			next();
-		})
-		.pipe(res);
-};
 
-module.exports = proxy;
+  const proxiedRequest = request(
+    {
+      host: [proxyHost, 'proxy'].join('.'),
+      port: 80,
+      path: req.url,
+      method: req.method,
+      headers: req.headers
+    },
+    response => {
+      res.writeHead(response.statusCode, response.headers)
+      response.pipe(res)
+    }
+  )
+
+  if(typeof req.rawBuffer !== 'undefined') {
+    proxiedRequest.write(req.rawBuffer)
+  }
+
+  proxiedRequest.on('error', (error) => {
+    console.error(`[${new Date().toISOString()}] ERROR: ${error.message}`)
+    next()
+  })
+
+  proxiedRequest.end()
+
+}
+
+module.exports = proxy

@@ -1,4 +1,4 @@
-const { startProxyServer } = require('./server');
+const { startProxyServer } = require('./server')
 
 const customStartConfig = {
   ports: {
@@ -6,10 +6,10 @@ const customStartConfig = {
     https: 443
   },
   test: false
-};
+}
 
 startProxyServer(customStartConfig).then(() => {
-  console.log("app is listening ...");
+  console.log('app is listening ...')
 }).catch((error) => {
-  console.error(error);
-});
+  console.error(error)
+})
