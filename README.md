@@ -1,4 +1,4 @@
-# docker-https-proxy [![Build Status](https://github.com/shroomlife/docker-https-proxy/workflows/docker-push/badge.svg)](https://github.com/shroomlife/docker-https-proxy/actions)
+# docker-https-proxy [![Build Status](https://github.com/shroomlife/docker-https-proxy/workflows/docker/badge.svg)](https://github.com/shroomlife/docker-https-proxy/actions)
 
 this is an easy HTTP(s) proxy docker container that you can use to have multiple docker containers running on a single machine and to proxy requests among the containers.
 

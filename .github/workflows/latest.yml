@@ -1,4 +1,4 @@
-name: Docker Deployment
+name: docker
 
 on:
   push:
