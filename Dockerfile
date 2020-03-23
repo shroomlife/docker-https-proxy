@@ -7,7 +7,7 @@ COPY yarn.lock .
 
 RUN yarn install --prod --non-interactive
 
-COPY src .
+COPY src ./src
 
 EXPOSE 80 443
-CMD [ "node", "index" ]
+CMD [ "node", "src/index" ]
