@@ -1,8 +1,6 @@
 const { request } =  require('http')
 
 const proxy = (req, res, next, proxyHost) => {
-  headers = req.headers;
-  headers['X-FORWARDED-PROTO'] = 'https';
 
   const proxiedRequest = request(
     {
@@ -10,7 +8,10 @@ const proxy = (req, res, next, proxyHost) => {
       port: 80,
       path: req.url,
       method: req.method,
-      headers: headers
+      headers: {
+        ...req.headers,
+        'X-FORWARDED-PROTO': req.protocol
+      }
     },
     response => {
       res.writeHead(response.statusCode, response.headers)
