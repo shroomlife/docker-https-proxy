@@ -1,10 +1,15 @@
-# docker-https-proxy [![Build Status](https://github.com/shroomlife/docker-https-proxy/workflows/docker/badge.svg)](https://github.com/shroomlife/docker-https-proxy/actions)
+# Easy Docker HTTP(s) Proxy [![Build Status](https://github.com/shroomlife/docker-https-proxy/workflows/docker/badge.svg)](https://github.com/shroomlife/docker-https-proxy/actions)
 
-this is an easy HTTP(s) proxy docker container that you can use to have multiple docker containers running on a single machine and to proxy requests among the containers.
+This is an easy to use HTTP(s) proxy for your docker containers that you can use to have multiple containers running on a single machine and to proxy requests among those containers.
 
-## how to use
+## Prerequisites
 
-see the following example `docker-compose.yml` file.
+* [Docker](https://docs.docker.com/get-docker/) - The containerization service.
+* [docker-compose](https://docs.docker.com/compose/gettingstarted/) - The orchestration service for your environment.
+
+## Getting Started
+
+Use the following example `docker-compose.yml` file.
 
 ```yml
 version: '3.3'
@@ -15,9 +20,9 @@ services:
     ports:
       - "80:80"
       - "443:443"
-  example.com:
+  webserver:
     container_name: example.com.proxy
     image: httpd:latest
 ```
 
-when your server is reached now at `example.com` all requests will be proxied to your httpd container.
+When your server with docker is contacted at `example.com` all requests will be proxied to your custom container on port 80.
