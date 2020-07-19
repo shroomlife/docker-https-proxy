@@ -9,9 +9,19 @@ This is an easy to use HTTP(s) proxy for your docker containers that you can use
 
 ## Getting Started
 
+### Using Docker Hub
+
+```Shell
+docker run --name=proxy -d -p 80:80 -p 443:443 shroomlife/docker-https-proxy:latest
+```
+
+🐳 [https://hub.docker.com/r/shroomlife/docker-https-proxy](https://hub.docker.com/r/shroomlife/docker-https-proxy)
+
+### Using Docker Compose
+
 Use the following example `docker-compose.yml` file.
 
-```yml
+```YAML
 version: '3.3'
 services:
   proxy:
