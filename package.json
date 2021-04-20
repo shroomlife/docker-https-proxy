@@ -20,6 +20,8 @@
     "kind-of": ">= 6.0.3",
     "lodash": ">= 4.17.19",
     "minimist": ">= 1.2.2",
+    "node-notifier": ">= 8.0.1",
+    "y18n": "4.0.1",
     "yargs-parser": ">= 13.1.2"
   },
   "dependencies": {
