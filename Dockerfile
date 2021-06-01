@@ -1,11 +1,10 @@
-FROM bitnami/node:15-prod
+FROM node:15-stretch
 
 WORKDIR /usr/src/app
 
-COPY package.json .
-COPY yarn.lock .
+COPY package*.json ./
 
-RUN yarn install --prod --non-interactive
+RUN npm install --prod --non-interactive
 
 COPY src ./src
 
