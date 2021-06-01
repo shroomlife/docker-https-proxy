@@ -1,6 +1,5 @@
 const express = require('express')
 const app = express()
-const bodyParser = require('body-parser')
 const proxy = require('./proxy')
 
 var rawBodySaver = function(req, res, buf) {
@@ -10,7 +9,7 @@ var rawBodySaver = function(req, res, buf) {
 }
 
 app.use(
-  bodyParser.raw({
+  express.raw({
     limit: '1gb',
     verify: rawBodySaver,
     type: function() {
