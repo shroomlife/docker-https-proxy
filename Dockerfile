@@ -1,4 +1,4 @@
-FROM bitnami/node:13-prod
+FROM bitnami/node:15-prod
 
 WORKDIR /usr/src/app
 
