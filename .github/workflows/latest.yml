@@ -16,9 +16,9 @@ jobs:
       with:
         ref: main
     - name: Install Dependencies
-      run: yarn install
+      run: npm install
     - name: Start Server Test
-      run: yarn test
+      run: npm test
     - name: Build Docker Image shroomlife/docker-https-proxy:latest
       run: docker build . --tag shroomlife/docker-https-proxy:latest
     - name: Login to Docker Hub
