@@ -14,6 +14,7 @@
   },
   "resolutions": {
     "acorn": ">= 6.4.1",
+    "ansi-regex": ">=5.0.1",
     "dot-prop": ">= 4.2.1",
     "handlebars": ">= 4.3.0",
     "hosted-git-info": ">= 2.8.9",
@@ -22,10 +23,10 @@
     "lodash": ">= 4.17.21",
     "minimist": ">= 1.2.2",
     "node-notifier": ">= 8.0.1",
+    "tmpl": ">=1.0.5",
     "ws": ">= 7.4.6",
     "y18n": ">= 4.0.1",
-    "yargs-parser": ">= 13.1.2",
-    "tmpl": ">=1.0.5"
+    "yargs-parser": ">= 13.1.2"
   },
   "dependencies": {
     "express": "4.17.1"
