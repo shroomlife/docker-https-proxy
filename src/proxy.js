@@ -5,7 +5,7 @@ const proxy = (req, res, next, proxyHost) => {
   const proxiedRequest = request(
     {
       host: [proxyHost, 'proxy'].join('.'),
-      port: 80,
+      port: process.env.REDIRECT_PORT || 80,
       path: req.url,
       method: req.method,
       headers: {

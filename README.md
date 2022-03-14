@@ -36,3 +36,7 @@ services:
 ```
 
 When your server with docker is contacted at `example.com` all requests will be proxied to your custom container on port 80.
+
+### Using Custom Redirect Port on Proxy
+
+The default port for the connection to your containers is `80`. You can set the environment variable `REDIRECT_PORT` to a different port.
