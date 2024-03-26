@@ -29,7 +29,7 @@
     "yargs-parser": ">= 13.1.2"
   },
   "dependencies": {
-    "express": "4.17.1"
+    "express": "4.19.2"
   },
   "devDependencies": {
     "jest": "27.0.3",
